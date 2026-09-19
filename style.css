@@ -46,10 +46,6 @@ nav {
     display: block;
 }
 
-.nav-links {
-    width: 100%;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -133,13 +129,18 @@ a {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+.nav-links {
+    position: relative;
+    width: 100%;
+}
+
 .nav-indicator {
     position: absolute;
-    bottom: 0px;
+    bottom: -5px; /* Sits cleanly just beneath text items */
     height: 3px;
     background-color: #d1207a;
     border-radius: 2px;
-    transition: all 0.3s ease-in-out;
+    transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     pointer-events: none;
     z-index: 102;
 }
