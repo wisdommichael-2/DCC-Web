@@ -167,11 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-// Look for code in script.js that does this:
-document.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link) {
-        // IF IT HAS THIS:
-        // window.location.href = ... or e.preventDefault()
-    }
-});
+const telegramBtn = document.getElementById('telegram-btn');
+
+if (telegramBtn) {
+    telegramBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open('https://t.me/VDCC_management', '_blank');
+    });
+}
