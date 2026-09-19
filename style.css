@@ -661,3 +661,489 @@ a {
         color: #00044d !important;
     }
 }
+/* Add this anywhere in your main CSS to hide the hamburger on desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* Update your existing mobile media query at the bottom of style.css */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Style the pink hamburger lines */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 999;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #d1207a;
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Hide the navigation links by default on mobile */
+    .nav-links {
+        display: none; 
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* This class is added by JavaScript to show the menu */
+    .nav-links.nav-active {
+        display: block; 
+    }
+
+    /* Ensure list stacks cleanly when active */
+    .nav-links ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 20px !important;
+    }
+
+    /* Move hamburger menu icon to the far left */
+    .menu-toggle {
+        display: flex !important;
+        order: 1 !important; /* Forces toggle to sit first on the left */
+        margin-right: auto !important;
+        cursor: pointer;
+    }
+
+    /* Keep logo positioned properly beside or centered */
+    .logo {
+        order: 2 !important;
+        margin: 0 !important;
+    }
+
+    /* Dropdown container spans full width beneath top bar */
+    .nav-links {
+        order: 3 !important;
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex !important;
+        justify-content: center !important; /* Center the logo horizontally */
+        align-items: center !important;
+        position: relative !important;
+        padding: 10px 20px !important;
+    }
+
+    /* Pin the hamburger button to the absolute left */
+    .menu-toggle {
+        display: flex !important;
+        position: absolute !important;
+        left: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        margin: 0 !important;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    /* Center the logo */
+    .logo {
+        margin: 0 auto !important;
+    }
+
+    .logo img {
+        margin: 0 !important;
+    }
+
+    /* Full-width container for dropdown links when opened */
+    .nav-links {
+        width: 100% !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        background-color: #ffffff !important;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1) !important;
+        z-index: 999;
+    }
+}
+@media screen and (max-width: 768px) {
+    /* Base styling for hamburger bars */
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #d1207a;
+        border-radius: 2px;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    /* Transform to 'X' when the .is-active class is toggled */
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+@media screen and (max-width: 768px) {
+    /* Main mobile dropdown menu container */
+    .nav-links {
+        display: none;
+        width: 100% !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        background-color: #ffffff !important; /* Solid background */
+        padding: 20px 0 !important;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15) !important;
+        z-index: 1000 !important;
+    }
+
+    .nav-links.nav-active {
+        display: block !important;
+    }
+
+    /* Stack top-level links vertically */
+    .nav-links > ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 16px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .nav-links > ul > li {
+        width: 100% !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+
+    /* FIX: Un-float submenus on mobile so they stack inline instead of overlapping */
+    .drop1, .drop2, .drop3, .drop4 {
+        position: static !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background-color: #f8f9fa !important; /* Light grey card background for sub-items */
+        width: 90% !important;
+        margin: 8px auto 0 auto !important;
+        padding: 10px 0 !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+    }
+
+    .drop1 li, .drop2 li, .drop3 li, .drop4 li {
+        padding: 6px 0 !important;
+        text-align: center !important;
+    }
+
+    .drop1 li a, .drop2 li a, .drop3 li a, .drop4 li a {
+        font-size: 14px !important;
+        color: #333333 !important;
+    }
+
+    /* Hide desktop indicator line on mobile menu */
+    .nav-indicator {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    /* Main navigation container */
+    .nav-links {
+        display: none;
+        width: 100% !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        background-color: #ffffff !important;
+        padding: 20px 0 !important;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15) !important;
+        z-index: 1000 !important;
+    }
+
+    .nav-links.nav-active {
+        display: block !important;
+    }
+
+    /* Stack main items vertically */
+    .nav-links > ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 16px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .nav-links > ul > li {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    /* Hide submenus by default on mobile */
+    .drop1, .drop2, .drop3, .drop4 {
+        position: static !important;
+        display: none !important; /* Hides submenus initially */
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        background-color: #f4f5f8 !important;
+        width: 90% !important;
+        margin: 8px auto 0 auto !important;
+        padding: 8px 0 !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+    }
+
+    /* Display submenu only when parent li has .open class */
+    .nav-links > ul > li.open > ul {
+        display: block !important;
+    }
+
+    .drop1 li, .drop2 li, .drop3 li, .drop4 li {
+        padding: 8px 0 !important;
+        text-align: center !important;
+    }
+
+    .drop1 li a, .drop2 li a, .drop3 li a, .drop4 li a {
+        font-size: 14px !important;
+        color: #00044d !important;
+    }
+
+    .nav-indicator {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    /* Main navigation panel */
+    .nav-links {
+        display: none;
+        width: 100% !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        background-color: #ffffff !important;
+        padding: 20px 0 !important;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15) !important;
+        z-index: 1000 !important;
+    }
+
+    /* Shown when hamburger is clicked */
+    .nav-links.nav-active {
+        display: block !important;
+    }
+
+    /* Stack main links vertically */
+    .nav-links > ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 16px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .nav-links > ul > li {
+        width: 100% !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+
+    /* FORCE HIDE ALL SUBMENUS BY DEFAULT */
+    .nav-links ul li ul,
+    .drop1, .drop2, .drop3, .drop4 {
+        display: none !important;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        background-color: #f4f5f8 !important;
+        width: 90% !important;
+        margin: 8px auto 0 auto !important;
+        padding: 8px 0 !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+    }
+
+    /* ONLY SHOW SUBMENU WHEN PARENT LI HAS .open CLASS */
+    .nav-links ul li.open > ul,
+    .nav-links ul li.open > .drop1,
+    .nav-links ul li.open > .drop2,
+    .nav-links ul li.open > .drop3,
+    .nav-links ul li.open > .drop4 {
+        display: block !important;
+    }
+
+    .nav-links ul li ul li {
+        padding: 8px 0 !important;
+        text-align: center !important;
+    }
+
+    .nav-links ul li ul li a {
+        font-size: 14px !important;
+        color: #00044d !important;
+    }
+
+    /* Disable desktop hover effects on mobile */
+    .nav-links ul li:hover > ul {
+        display: none !important;
+    }
+
+    .nav-links ul li.open:hover > ul {
+        display: block !important;
+    }
+
+    .nav-indicator {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    /* Header layout */
+    nav {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+        padding: 10px 20px !important;
+    }
+
+    /* Pink Hamburger / X Icon */
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        position: absolute !important;
+        left: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        cursor: pointer !important;
+        z-index: 1001 !important;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #d1207a;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Transform to 'X' */
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Centered logo */
+    .logo {
+        margin: 0 auto !important;
+    }
+
+    /* DROPDOWN CONTAINER */
+    .nav-links {
+        display: none !important; /* Hidden initially */
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: #ffffff !important;
+        padding: 20px 0 !important;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2) !important;
+        z-index: 1000 !important;
+    }
+
+    /* SHOW DROPDOWN WHEN ACTIVE */
+    .nav-links.nav-active {
+        display: block !important;
+    }
+
+    /* Top-level list stacking */
+    .nav-links > ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 16px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+    }
+
+    .nav-links > ul > li {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .nav-links > ul > li > a {
+        font-weight: bold !important;
+        color: #00044d !important;
+        text-decoration: none !important;
+        display: block !important;
+        padding: 6px 0 !important;
+    }
+
+    /* HIDE SUBMENUS BY DEFAULT */
+    .nav-links ul li ul,
+    .drop1, .drop2, .drop3, .drop4 {
+        display: none !important;
+        position: static !important;
+        background-color: #f4f5f8 !important;
+        width: 85% !important;
+        margin: 8px auto 0 auto !important;
+        padding: 8px 0 !important;
+        border-radius: 6px !important;
+        list-style: none !important;
+    }
+
+    /* REVEAL SUBMENU WHEN TOP ITEM IS OPEN */
+    .nav-links ul li.submenu-open > ul,
+    .nav-links ul li.submenu-open > .drop1,
+    .nav-links ul li.submenu-open > .drop2,
+    .nav-links ul li.submenu-open > .drop3,
+    .nav-links ul li.submenu-open > .drop4 {
+        display: block !important;
+    }
+
+    .nav-links ul li ul li {
+        padding: 6px 0 !important;
+    }
+
+    .nav-links ul li ul li a {
+        font-size: 14px !important;
+        color: #333333 !important;
+    }
+
+    .nav-indicator {
+        display: none !important;
+    }
+}
